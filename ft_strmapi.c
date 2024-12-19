@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afabian- <afabian-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 21:00:49 by afabian-          #+#    #+#             */
-/*   Updated: 2024/12/19 21:00:49 by afabian-         ###   ########.fr       */
+/*   Created: 2024/12/19 21:02:19 by afabian-          #+#    #+#             */
+/*   Updated: 2024/12/19 21:02:19 by afabian-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int ft_isalnum(int c)
+#include "libft.h"
+
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    if ((c >= 'A' && c <= 'Z') ||
-        (c >= 'a' && c <= 'z') ||
-        (c >= '0' && c <= '9'))
+    unsigned int i;
+    char *ptr;
+
+    if (!s || !f)
+        return (NULL);
+    ptr = (char *)malloc(ft_strlen(s) + 1);
+    if (!ptr)
+        return (NULL);
+    i = 0;
+    while (s[i])
     {
-        return 1;
+        ptr[i] = f(i, s[i]);
+        i++;
     }
-    else
-        return 0;
+    ptr[i] = '\0';
+    return (ptr);
 }

@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afabian- <afabian-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 21:00:49 by afabian-          #+#    #+#             */
-/*   Updated: 2024/12/19 21:00:49 by afabian-         ###   ########.fr       */
+/*   Created: 2024/12/19 21:02:32 by afabian-          #+#    #+#             */
+/*   Updated: 2024/12/19 21:02:32 by afabian-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int ft_isalnum(int c)
+#include "libft.h"
+
+char *ft_strrchr(const char *s, int c)
 {
-    if ((c >= 'A' && c <= 'Z') ||
-        (c >= 'a' && c <= 'z') ||
-        (c >= '0' && c <= '9'))
+    int i;
+    char *last_occurrence;
+    i = 0;
+    last_occurrence = NULL;
+    while (s[i])
     {
-        return 1;
+        if (s[i] == (unsigned char)c)
+            last_occurrence = (char *)&s[i];
+        i++;
     }
-    else
-        return 0;
+    if (s[i] == (unsigned char)c)
+        return ((char *)&s[i]);
+    return (last_occurrence);
 }

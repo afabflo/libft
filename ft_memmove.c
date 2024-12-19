@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afabian- <afabian-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 21:00:49 by afabian-          #+#    #+#             */
-/*   Updated: 2024/12/19 21:00:49 by afabian-         ###   ########.fr       */
+/*   Created: 2024/12/19 21:01:16 by afabian-          #+#    #+#             */
+/*   Updated: 2024/12/19 21:01:16 by afabian-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int ft_isalnum(int c)
+#include "libft.h"
+
+void *ft_memove(void *dest, const void *src, size_t n)
 {
-    if ((c >= 'A' && c <= 'Z') ||
-        (c >= 'a' && c <= 'z') ||
-        (c >= '0' && c <= '9'))
+    unsigned char *d;
+    unsigned char *s;
+    d = (unsigned char *)dest;
+    s = (unsigned char *)src;
+    if (s < d && s + n > d)
     {
-        return 1;
+        while (n--)
+            d[n] = s[n];
+        return (dest);
     }
-    else
-        return 0;
+    return (ft_memcpy(dest, src, n));
 }
