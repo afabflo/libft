@@ -9,14 +9,14 @@
 /*   Updated: 2024/12/19 21:02:15 by afabian-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-
-int ft_strlen(const char *str)
+size_t	ft_strlen(const char *s)
 {
-    unsigned int lenght = 0;
-    while (str[lenght] != '\0')
-    {
-        lenght++;
-    }
-    return lenght;
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

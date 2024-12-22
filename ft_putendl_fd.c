@@ -9,12 +9,13 @@
 /*   Updated: 2024/12/19 21:01:29 by afabian-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
 	if (s != NULL)
+	{
 		write(fd, s, ft_strlen(s));
+		write(fd, "\n", 1);
+	}
 }
